@@ -13,6 +13,8 @@ require(__dirname + "/api/ping.js"); // to keep the app awake
 	
 var app = express();
 
+app.use('/app', express.static(__dirname + '/public'));
+
 // Basic request preparation and stuffing post data into req
 var prepareRequests = function(request, response, next) {
 
