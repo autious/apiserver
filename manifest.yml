@@ -1,0 +1,10 @@
+applications:
+- disk_quota: 1024M
+  host: playtomic
+  name: Playtomic
+  command: node web.js
+  path: .
+  instances: 1
+  memory: 128M
+  services:
+   - MongoLab-zd

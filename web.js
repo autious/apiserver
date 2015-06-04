@@ -1,3 +1,7 @@
+if (!process.env.VCAP_SERVICES) {
+    process.env["VCAP_SERVICES"] = JSON.stringify(require("./VCAP_SERVICES.json"));
+}
+
 var express = require("express"),
     bodyParser = require('body-parser'),
     querystring = require("querystring"),
@@ -52,9 +56,10 @@ if ('production' == app.get('env')) {
 }
 
 // start
-var port = process.env.PORT || 3000;
+var port = (process.env.VCAP_APP_PORT || 3000);
+var host = (process.env.VCAP_APP_HOST || "localhost");
 
-app.listen(port, function() {
+app.listen(port, host, function() {
   console.log("Listening on " + port + ", env: " + process.env.NODE_ENV + ", local: " + (process.env.local || false));
 });
 

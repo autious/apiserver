@@ -1,6 +1,7 @@
 module.exports = {
     mongodb: {
-        playtomic: process.env.playtomic || // manual setup
+        playtomic: JSON.parse(process.env.VCAP_SERVICES).mongolab[0].credentials.uri ||
+                   process.env.playtomic || // manual setup
                    process.env.MONGOLAB_URI ||  // new 'deploy to heroku'
                    "mongodb://127.0.0.1:27017/playtomic" // local testing
     },
