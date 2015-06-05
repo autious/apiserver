@@ -9,13 +9,16 @@ Intro
 ## Bluemix
 ### Bluemix Platform
 **What is Bluemix?**
-> Bluemix is a Platform as a Service offering from IBM where you host and run your code in the Cloud. More info at [Wikipedia][3], [PaaS][4], and of course [Bluemix.net][1]
+> Bluemix is a Platform as a Service offering from IBM where you host and run your code in the Cloud. More info at [Wikipedia][wiki_bluemix], [PaaS][wiki_paas], and of course [Bluemix.net][bluemix]
 
 **Why use Bluemix?**
-> Bluemix is built upon the open source framework called [Cloud Foundry][5], which enables a developer to push a wide range of code languages (polyglot) to the Cloud where the platform handles all the setup, configuration and deployment of your code. Bluemix compared to vanilla Cloud Foundry extends the platform by adding a catalog of enterprise grade services (databases, SMS integration, IoT, Watson!, etc) that developers can easily integrate into their apps. 
+> Bluemix is built upon the open source framework called [Cloud Foundry][cf], which enables a developer to push a wide range of code languages (polyglot) to the Cloud where the platform handles all the setup, configuration and deployment of your code. Bluemix compared to vanilla Cloud Foundry extends the platform by adding a catalog of enterprise grade services (databases, SMS integration, IoT, Watson!, etc) that developers can easily integrate into their apps. 
 
 **How to use Bluemix?**
 > Developers will still do most of their work on their devstations and push their code to Bluemix when they are ready to run it live for general use. This guide will show easy steps how to get up and running with a sample app suitable to this hackathon. 
+
+**Examples for Bluemix**
+>
 
 ## Playtomic
 ** What is Playtomic
@@ -30,20 +33,20 @@ Intro
 ### Playtomic API Server App
 A sample app very much suited for this hackathon is the Playtomic API Server. Deployed on the cloud, the app provides a backend service for game developers to handle things such as achievements, leaderboards, player levels, gamevars, geoip and in-game newsletter subscription. A platform for your game compatible with most gaming platforms. Playtomic has extensive documentation, compatibility and tests/examples for most gaming platforms including:
 
-- **[Unity3d][7]**
+- **[Unity3d][playtomics_unity]**
 - ActionScript 3
-- [Android / Java][8]
+- [Android / Java][playtomics_android]
 - Haxe / OpenFL
 - HTML5 / JavaScript
-- [iOS / Objective C][9]
+- [iOS / Objective C][playtomics_ios]
 - Mono and .NET
 
 Getting started
 ---
 Prerequisites
-1. Basic knowledge of [git][16]
-2. [Bluemix Account][1] - Signup for free 30 day trial
-3. [Cloud Foundry (cf) CLI tool][2]
+1. Basic knowledge of [git][git]
+2. [Bluemix Account][bluemix] - Signup for free 30 day trial
+3. [Cloud Foundry (cf) CLI tool][cf_tool]
 
 Most of the steps in this guide can also be made from the Bluemix webgui dashboard.
 
@@ -53,10 +56,10 @@ Commit
 Begin by cloning the forked Playtomic git repo at [repo_link] to your dev station.
 This code is slightly modified from the original repo to play nice on Bluemix.
 ```
-git clone https://github.com/oscaralmgrenibm/apiserver.git
-cd apiserver
+$ git clone https://github.com/oscaralmgrenibm/apiserver.git
+$ cd apiserver
 // install all dependencies
-npm install 
+$ npm install 
 ```
 
 A quick overview of the project structure shows that this project uses:
@@ -67,7 +70,7 @@ A quick overview of the project structure shows that this project uses:
 
 If you have Node.js and MongoDB installed locally, you can start the Playtomic API by issuing from a terminal
 ```
-node web.js
+$ node web.js
 ```
 > **Note:**
 
@@ -86,8 +89,8 @@ applications:
   services:
   - mongodb-playtronic
 ```
-For more information on manifest.yml file, [documentation here][11]
-Useful tool for manifest files, [manifest generator][cfmangen]
+For more information on manifest.yml file, [documentation here][cf_manifest]
+Useful tool for manifest files, [manifest generator][cf_mangen]
 
 
 Deploy
@@ -214,20 +217,23 @@ Nifty ways to automate build and deploy is always appreciated by developers and 
 > Written with [StackEdit](https://stackedit.io/).  
 
 Links
-[1]: http://www.bluemix.net/
-[2]: https://github.com/cloudfoundry/cli/releases
-[3]: http://en.wikipedia.org/wiki/Bluemix
-[4]: http://en.wikipedia.org/wiki/Platform_as_a_service
-[5]: http://cloudfoundry.org/index.html
-[6]: http://playtomic.org/
-[7]: http://playtomic.org/api/unity3d.html
-[8]: http://playtomic.org/api/android.html
-[9]: http://playtomic.org/api/ios.html
-[10]: https://github.com/lorentzlasson/apiserver
-[11]: http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html
-[cfmangen]: http://cfmanigen.mybluemix.net/
-[13]: https://www.getpostman.com/
-[14]: http://curl.haxx.se/
-[15]: https://hub.jazz.net/
-[16]: https://git-scm.com/
+[bluemix]: http://www.bluemix.net/ecod-nordics
+[cf_tool]: https://github.com/cloudfoundry/cli/releases
+[wiki_bluemix]: http://en.wikipedia.org/wiki/Bluemix
+[wiki_paas]: http://en.wikipedia.org/wiki/Platform_as_a_service
+[cf]: http://cloudfoundry.org/index.html
+[playtomic]: http://playtomic.org/
+[playtomic_unity]: http://playtomic.org/api/unity3d.html
+[playtomic_android]: http://playtomic.org/api/android.html
+[playtomic_ios]: http://playtomic.org/api/ios.html
+[github_repo]: https://github.com/lorentzlasson/apiserver
+[cf_manifest]: http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html
+[cf_mangen]: http://cfmanigen.mybluemix.net/
+[postman]: https://www.getpostman.com/
+[curl]: http://curl.haxx.se/
+[devops]: https://hub.jazz.net/
+[git]: https://git-scm.com/
+[nodejs]: https://nodejs.org
+[mongodb]: https://www.mongodb.org/
+
 
