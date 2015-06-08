@@ -12,9 +12,9 @@ Bluemix
 **Why use Bluemix?**
 > Bluemix is built upon the open source framework called [Cloud Foundry][cf], which enables a developer to push a wide range of code languages (polyglot) to the Cloud, where the platform handles all the setup, configuration and deployment of your code. 
 
-> Bluemix pricing is Pay-as-you-Go so use a little = no cost, use some more = use the pricing calculator based on how much RAM and resource usage you expect.
+> Bluemix pricing is Pay-as-you-Go. Use a little memory = no cost, use some more memory and data = pricing scales. Use the [pricing calculator][price_calc] based on how much RAM and resource usage you expect.
 
-> Also, Bluemix will not hibernate your apps if there is no activity over a long time.
+> Also, Bluemix will *not hibernate* your apps if there is no activity over a long time.
 
 **How to use Bluemix?**
 > Developers will still do most of their work on their devstations and push their code to Bluemix when they are ready to run it live for general use. This guide will show easy steps how to get up and running with a sample app suitable to this hackathon. 
@@ -31,25 +31,25 @@ Playtomic
 > See the [game api documentation][playtomic_apis] at Playtomic website. Basically add libraries to your game that handles all the calls to and from Playtomic.
 
 **Example libraries**
-- **[Unity3d][playtomics_unity]**
+- **Unity3d**
 - ActionScript 3
-- [Android / Java][playtomics_android]
+- Android / Java
 - Haxe / OpenFL
 - HTML5 / JavaScript
-- [iOS / Objective C][playtomics_ios]
+- iOS / Objective C
 - Mono and .NET
 
 Getting started
 ---
-Prerequisites
-1. Basic knowledge of [git][git]
-2. [Bluemix Account][bluemix] - Signup for free 30 day trial
-3. [Cloud Foundry (cf) CLI tool][cf_tool]
+**Prerequisites**
+- Basic knowledge of [git][git]
+- [Bluemix Account][bluemix] - Signup for 30 day free trial
+- [Cloud Foundry (cf) CLI tool][cf_tool] for push and operations from terminal
 
 Most of the steps in this guide can also be made from the Bluemix webgui dashboard.
 
 
-Commit
+Install & Commit
 ---
 Begin by cloning the forked [Playtomic git repo][github_repo] to your dev station.
 This code is slightly modified from the original repo to play nice on Bluemix.
@@ -285,4 +285,4 @@ For every push to master/origin the code will now be build, deployed and ready t
 [add_bind_service]: https://www.ng.bluemix.net/docs/services/reqnsi.html#req_instance
 [bluemix_catalog]: https://console.ng.bluemix.net/?direct=classic/#/store/cloudOEPaneId=store
 [playtomic_apis]: http://playtomic.org/apis.html
-
+[price_calc]: https://console.ng.bluemix.net/pricing/
