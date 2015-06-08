@@ -46,7 +46,7 @@ Getting started
 - [Bluemix Account][bluemix] - Signup for 30 day free trial
 - [Cloud Foundry (cf) CLI tool][cf_tool] for push and operations from terminal
 
-Most of the steps in this guide can also be made from the Bluemix webgui dashboard.
+>Most of the steps in this guide can also be made from the Bluemix webgui dashboard.
 
 
 Install & Commit
