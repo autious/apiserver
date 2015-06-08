@@ -9,16 +9,16 @@ Intro
 ## Bluemix
 ### Bluemix Platform
 **What is Bluemix?**
-> Bluemix is a Platform as a Service offering from IBM where you host and run your code in the Cloud. More info at [Wikipedia][wiki_bluemix], [PaaS][wiki_paas], and of course [Bluemix.net][bluemix]
+> Bluemix is a Platform as a Service offering from IBM where you host and run your code in the Cloud. More info at [Wikipedia][wiki_bluemix], [PaaS][wiki_paas], and of course [Bluemix.net][bluemix]. Bluemix compared to vanilla Cloud Foundry extends the platform by adding a [catalog of enterprise grade services][bluemix_catalog] (databases, SMS integration, IoT, Watson!, etc) that developers can easily integrate into their apps. 
 
 **Why use Bluemix?**
-> Bluemix is built upon the open source framework called [Cloud Foundry][cf], which enables a developer to push a wide range of code languages (polyglot) to the Cloud where the platform handles all the setup, configuration and deployment of your code. Bluemix compared to vanilla Cloud Foundry extends the platform by adding a catalog of enterprise grade services (databases, SMS integration, IoT, Watson!, etc) that developers can easily integrate into their apps. 
+> Bluemix is built upon the open source framework called [Cloud Foundry][cf], which enables a developer to push a wide range of code languages (polyglot) to the Cloud where the platform handles all the setup, configuration and deployment of your code. Also, Bluemix is Pay-as-you-Go
 
 **How to use Bluemix?**
 > Developers will still do most of their work on their devstations and push their code to Bluemix when they are ready to run it live for general use. This guide will show easy steps how to get up and running with a sample app suitable to this hackathon. 
 
 **Examples for Bluemix**
->
+> 
 
 ## Playtomic
 ** What is Playtomic
@@ -53,10 +53,10 @@ Most of the steps in this guide can also be made from the Bluemix webgui dashboa
 
 Commit
 ---
-Begin by cloning the forked Playtomic git repo at [repo_link] to your dev station.
+Begin by cloning the forked [Playtomic git repo][github_repo] to your dev station.
 This code is slightly modified from the original repo to play nice on Bluemix.
 ```
-$ git clone https://github.com/oscaralmgrenibm/apiserver.git
+$ git clone https://github.com/lorentzlasson/apiserver.git
 $ cd apiserver
 // install all dependencies
 $ npm install 
@@ -68,15 +68,15 @@ A quick overview of the project structure shows that this project uses:
 - mongodb
 - mailchimp
 
-If you have Node.js and MongoDB installed locally, you can start the Playtomic API by issuing from a terminal
+If you have [Node.js][nodejs] and [MongoDB][mongodb] installed locally, you can start the Playtomic API by issuing from a terminal
 ```
 $ node web.js
 ```
 > **Note:**
 
-> The app(host)name for your application must be unique since it will be on the form hostname.mybluemix.net and the services set in the manifest must exist before you try to push (and start) your app. If no host is specified in the manifest, app name will be the default used.
+> The app(host)name for your application must be unique since it will be on the form **hostname.mybluemix.net** and the services set in the manifest must exist before you try to push (and start) your app. If no host is specified in the manifest, the app **name** attribute will be the default used.
 
-> Should you not have all services already, you can add --no-start to cf push and then later on add and bind the services. More info on [add and bind services]
+> Should you not have all services already, you can add --no-start to the cf push command and then later on add and bind the services. More info on [add and bind services][add_bind_service].
 
 A sample manifest.yml (yaml) file for this project looks like the following. The manifest is optional but good practice to include if you want to scale your backend to more instances and/or more memory.
 ```
@@ -235,5 +235,6 @@ Links
 [git]: https://git-scm.com/
 [nodejs]: https://nodejs.org
 [mongodb]: https://www.mongodb.org/
-
+[add_bind_service]: https://www.ng.bluemix.net/docs/services/reqnsi.html#req_instance
+[bluemix_catalog]: 
 
