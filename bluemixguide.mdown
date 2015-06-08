@@ -1,38 +1,36 @@
 
-Welcome to Bluemix at DreamHackathon!
+Bluemix at DreamHackathon!
 ===================
 
 [TOC]
 
-Intro
+Bluemix
 ---
-## Bluemix
-### Bluemix Platform
 **What is Bluemix?**
-> Bluemix is a Platform as a Service offering from IBM where you host and run your code in the Cloud. More info at [Wikipedia][wiki_bluemix], [PaaS][wiki_paas], and of course [Bluemix.net][bluemix]. Bluemix compared to vanilla Cloud Foundry extends the platform by adding a [catalog of enterprise grade services][bluemix_catalog] (databases, SMS integration, IoT, Watson!, etc) that developers can easily integrate into their apps. 
+> Bluemix is a Platform as a Service offering from IBM where you host and run your code in the Cloud. More info at [Wikipedia][wiki_bluemix], [PaaS][wiki_paas], and of course [Bluemix.net][bluemix]. Bluemix compared to vanilla Cloud Foundry extends the platform by adding a [catalog of enterprise grade services][bluemix_catalog] (databases, SMS integration, IoT, Watson (famous from Jeopardy!), etc) that developers can easily integrate into their apps. 
 
 **Why use Bluemix?**
-> Bluemix is built upon the open source framework called [Cloud Foundry][cf], which enables a developer to push a wide range of code languages (polyglot) to the Cloud where the platform handles all the setup, configuration and deployment of your code. Also, Bluemix is Pay-as-you-Go
+> Bluemix is built upon the open source framework called [Cloud Foundry][cf], which enables a developer to push a wide range of code languages (polyglot) to the Cloud, where the platform handles all the setup, configuration and deployment of your code. 
+
+> Bluemix pricing is Pay-as-you-Go so use a little = no cost, use some more = use the pricing calculator based on how much RAM and resource usage you expect.
+
+> Also, Bluemix will not hibernate your apps if there is no activity over a long time.
 
 **How to use Bluemix?**
 > Developers will still do most of their work on their devstations and push their code to Bluemix when they are ready to run it live for general use. This guide will show easy steps how to get up and running with a sample app suitable to this hackathon. 
 
-**Examples for Bluemix**
-> 
+Playtomic
+---
+**What is Playtomic**
+> A sample app very much suited for this hackathon is the Playtomic API Server. Deployed on the cloud, the app provides a backend service for game developers to handle things such as achievements, leaderboards, player levels, gamevars, geoip and in-game newsletter subscription.
 
-## Playtomic
-** What is Playtomic
-> An app
+**Why use Playtomic**
+> It's a platform for your game compatible with most gaming platforms. Playtomic has extensive documentation, compatibility and tests/examples for most gaming platforms.
 
-** Why use Playtomic
-> It's a an app
+**How to use Playtomic**
+> See the [game api documentation][playtomic_apis] at Playtomic website. Basically add libraries to your game that handles all the calls to and from Playtomic.
 
-** How to use Playtomic
-> Find and use game api documentation at Playtomic website
-
-### Playtomic API Server App
-A sample app very much suited for this hackathon is the Playtomic API Server. Deployed on the cloud, the app provides a backend service for game developers to handle things such as achievements, leaderboards, player levels, gamevars, geoip and in-game newsletter subscription. A platform for your game compatible with most gaming platforms. Playtomic has extensive documentation, compatibility and tests/examples for most gaming platforms including:
-
+**Example libraries**
 - **[Unity3d][playtomics_unity]**
 - ActionScript 3
 - [Android / Java][playtomics_android]
@@ -79,6 +77,8 @@ $ node web.js
 > Should you not have all services already, you can add --no-start to the cf push command and then later on add and bind the services. More info on [add and bind services][add_bind_service].
 
 A sample manifest.yml (yaml) file for this project looks like the following. The manifest is optional but good practice to include if you want to scale your backend to more instances and/or more memory.
+
+**manifest.yml**:
 ```
 ---
 applications:
@@ -92,12 +92,20 @@ applications:
 For more information on manifest.yml file, [documentation here][cf_manifest]
 Useful tool for manifest files, [manifest generator][cf_mangen]
 
+**Action:** Update the hostname to a unique value, like your team name or so. Do a local git commit for extra saving.
+```
+---
+applications:
+...
+  host: unique_host_value
+...
+```
 
 Deploy
 ---
 
-### Login
-Download and install the Cloud Foundry tool (cf) linked from [prerequisites]. Check cf installed by opening a terminal and type
+**Login**
+Download and install the [Cloud Foundry tool (cf)][cf_tool]. Check that cf is installed by opening a terminal and enter
 ```
 $ cf --version
 cf version 6.11.2-2a26d55-2015-04-27T21:11:49+00:00
@@ -147,11 +155,13 @@ Org:            oscar.almgren
 Space:          dev   
 ```
 
-### Push
+**Push**
 Create an instance of MongoDB (hosted by MongoLabs) for the Playtomics Server app
 ```
 // cf create-service service_label service_plan service_name
 $ cf create-service mongolab sandbox mongodb-playtronic
+Creating service instance mongodb-playtronic in org oscar.almgren / space dev as oscar.almgren@se.ibm.com...
+OK
 ```
 
 From the project root catalog use cf push to deploy your code to Bluemix. This command will look for 
@@ -161,71 +171,108 @@ From the project root catalog use cf push to deploy your code to Bluemix. This c
 
 ```
 $ cf push
-Using manifest file /Users/oscaralmgren/Development/apiserver/manifest.yml
+Using manifest file /Users/lorentzlasson/Development/Repos/Other/playtomic/manifest.yml
 
-Updating app PlaytomicServer in org oscar.almgren / space dev as oscar.almgren@se.ibm.com...
+Updating app Playtomic in org lorentz.lasson@se.ibm.com / space dreamhack as lorentz.lasson@se.ibm.com...
 OK
 
-Using route bluemixplaytonic.mybluemix.net
-Uploading PlaytomicServer...
-Uploading app files from: /Users/oscaralmgren/Development/apiserver
-Uploading 373.6K, 116 files
+Using route playtomic.mybluemix.net
+Uploading Playtomic...
+Uploading app files from: /Users/lorentzlasson/Development/Repos/Other/playtomic
+Uploading 435K, 121 files
 Done uploading               
 OK
-Binding service mongodb-pt to app PlaytomicServer in org oscar.almgren / space dev as oscar.almgren@se.ibm.com...
+Binding service MongoLab-zd to app Playtomic in org lorentz.lasson@se.ibm.com / space dreamhack as lorentz.lasson@se.ibm.com...
 OK
 
-Starting app PlaytomicServer in org oscar.almgren / space dev as oscar.almgren@se.ibm.com...
------> Downloaded app package (7.2M)
------> Downloaded app buildpack cache (4.7M)
-...
-yada yada yada
-...
+Stopping app Playtomic in org lorentz.lasson@se.ibm.com / space dreamhack as lorentz.lasson@se.ibm.com...
+OK
+
+Starting app Playtomic in org lorentz.lasson@se.ibm.com / space dreamhack as lorentz.lasson@se.ibm.com...
+	-----> Downloaded app package (116K)
+-----> Downloaded app buildpack cache (4.9M)
+-----> Node.js Buildpack Version: v1.18-20150519-1759
+-----> Resetting git environment
+-----> Requested node range:  0.10.32
+-----> Resolved node version: 0.10.32
+-----> Installing IBM SDK for Node.js from cache
+-----> Checking and configuring service extensions
+-----> Restoring node_modules directory from cache
+-----> Pruning cached dependencies not specified in package.json
+       npm WARN package.json PlaytomicAPIServer@0.0.2 No repository field.
+-----> Installing dependencies
+       npm WARN package.json PlaytomicAPIServer@0.0.2 No repository field.
+-----> Caching node_modules directory for future builds
+-----> Cleaning up node-gyp and npm artifacts
 -----> Building runtime environment
-...
------> Uploading droplet (15M)
+-----> Checking and configuring service extensions
+-----> Installing App Management
+
+-----> Uploading droplet (14M)
+
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 starting
+1 of 1 instances running
+
+App started
 
 
-```
-I can now access my Playtronic API Server using a REST client, like POSTMAN for Chrome or curl, and use the functionality of leaderboards, achievements etc.
+OK
+Showing health and status for app Playtomic in org lorentz.lasson@se.ibm.com / space dreamhack as lorentz.lasson@se.ibm.com...
+OK
 
-Example curl to register a player achievement (POST operation)
-```
-curl -X POST -H 'Content-Type: application/json' -d '{ "user_id" : 47, "game":"Soccer game","achievement" : "Score a Hat Trick!"}' http://bluemixplaytomic.mybluemix.net/v1/achievements
-```
+requested state: started
+instances: 1/1
+usage: 128M x 1 instances
+urls: playtomic.mybluemix.net
+last uploaded: Mon Jun 8 09:06:39 UTC 2015
 
-Example curl to retrieve player achievements (GET operation)
-```
-curl 
+     state     since                    cpu    memory           disk   
+#0   running   2015-06-08 11:07:36 AM   5.5%   111.3M of 128M   58.7M of 1G   
 ```
 
 Scale
 ---
 
-So what to do now?
-You can start by having a look at the Bluemix Dashboard [6] and 
+**So what to do now?**
 
-* Scale the instance
-Increase or decrease memory, instances, add new services.
+Access the Playtomic API Server using one of the libraries found at [Playtomic APIs libraries][playtomic_apis].
 
-Repeat
+Also, a test page for api checks is accessible at ```*hostname*/app/test.html```, which can be used as a base for see how to call using HTML5/Js.
+
+**Scale and Overview**
+Login to Bluemix and check your Playtomic instance. You can now adjust number of instances running (for performance or load balancing), add more services if you'd like to experiment and check the logs.
+
+Repeat(?)
 ---
-Nifty ways to automate build and deploy is always appreciated by developers and minimizes manual errors.
+Nifty ways to automate build and deploy is always appreciated by developers and minimizes manual errors. A set it and forget it kind of setup.
 
-1. Open app overview, add git, go to IBM DevOps Services. This is where you manage and control your code, your stories and works task, and where you can setup a Build Pipeline that triggers on git commits and does all the manual stuff for you.
+How to set up the **Build & Deploy Pipeline**:
 
-> Written with [StackEdit](https://stackedit.io/).  
+1. Go to [IBM DevOps Services][devops], login using the same credentials as for Bluemix.
+2. See the overview of your projects, click '**Create a Project**'.
+3. Name the project, click '**Link with Repo**/Authorize Github'.
+4. Select the Playtomic repo from the dropdown, extra mark '**Make this a Bluemix Project**', check the deployment details, click '**Create**'. 
+5. Project created successfully, check top right corner, click **Build & Deploy** tab.
+6. Click '**Add Stage**' and rename the stage, maybe 'Build & Deploy'. Check value for **Stage Trigger** so the pipeline starts on git commit to master branch.
+7. Check Jobs and **Add a job** (**Build**) with either 'Simple' or 'npm' builder. For NPM, fill in optional details.
+8. Add another job (**Deploy**) and check values, click '**Save**'.
+9. Optional, you can now trigger a Build manually by clicking the '**Play**' icon, or add another stage, for example Test + Unit and Integration test scripts. 
 
-Links
+For every push to master/origin the code will now be build, deployed and ready to use within minutes. Remember though that diskspace on the Cloud is by nature ephemeral, meaning that a new instance will be spinned up and only what is stored in the git repo and in external data sources will be saved between deployments. If your users upload something, like a profil picture, be sure to save it in the database or some sort of data bucket.
+
+##Now good luck and hack that great collaborative game!
+
+
 [bluemix]: http://www.bluemix.net/ecod-nordics
 [cf_tool]: https://github.com/cloudfoundry/cli/releases
 [wiki_bluemix]: http://en.wikipedia.org/wiki/Bluemix
 [wiki_paas]: http://en.wikipedia.org/wiki/Platform_as_a_service
 [cf]: http://cloudfoundry.org/index.html
 [playtomic]: http://playtomic.org/
-[playtomic_unity]: http://playtomic.org/api/unity3d.html
-[playtomic_android]: http://playtomic.org/api/android.html
-[playtomic_ios]: http://playtomic.org/api/ios.html
+[playtomics_unity]: http://playtomic.org/api/unity3d.html
+[playtomics_android]: http://playtomic.org/api/android.html
+[playtomics_ios]: http://playtomic.org/api/ios.html
 [github_repo]: https://github.com/lorentzlasson/apiserver
 [cf_manifest]: http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html
 [cf_mangen]: http://cfmanigen.mybluemix.net/
@@ -236,5 +283,6 @@ Links
 [nodejs]: https://nodejs.org
 [mongodb]: https://www.mongodb.org/
 [add_bind_service]: https://www.ng.bluemix.net/docs/services/reqnsi.html#req_instance
-[bluemix_catalog]: 
+[bluemix_catalog]: https://console.ng.bluemix.net/?direct=classic/#/store/cloudOEPaneId=store
+[playtomic_apis]: http://playtomic.org/apis.html
 
